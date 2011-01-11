@@ -4,3 +4,4 @@ source "http://rubygems.org"
 gemspec
 
 gem 'rack-cache', :require => 'rack/cache'
+gem 'rack-test',  :require => 'rack/test'
