@@ -3,20 +3,26 @@ require 'sinatra/base'
 require 'yarc'
 
 class App < Sinatra::Base
-  register Sinatra::Yarc do
-    extend Sinatra::Yarc::Options
+  register Sinatra::Yarc
 
-    options do |o|
-      o.login      '/login'
-      o.logout     '/logout'
-      o.home       '/home'  # could be a summary of all urls and navigations groups
-      o.content    '/home/content/*'
-      o.javascript '/home/javascript/:file_name'
-    end
+  yarc do |y|
+    y.prefix     = '/yarco'
+    y.public     = '/'
+    y.home       = '/doma'
+    y.edit       = '/edito/*'
+    y.json       = '/jsono'
   end
 
+  get '/suhaj' do
+    'hej'
+  end
   get '/vlado' do
-    '<h1>vlado</h1>'
+    urls = []
+    p self.class.routes#'GET']
+    #self.class.routes['GET'].each {|r| r[0] = /^\/kopa$/ }
+    settings.routes['GET'].each {|r| urls << r.first }
+    puts settings.routes['GET'].each {|r| urls << r.first }
+    urls.to_s
   end
 end
 

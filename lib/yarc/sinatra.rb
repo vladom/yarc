@@ -2,25 +2,19 @@ require 'sinatra/base'
 
 module Sinatra
   module Yarc
+
     def self.registered(app)
-      # TODO
-      # add routes into the app class for:
-      #   - templates
-      #   - content
-      #   - jQuery + jQuery UI
-      #   - javascript lib
-      #   - other constants of the Yarc lib
-
-      app.register ::Yarc::Settings
-      app.register ::Yarc::Routes
+      ::Yarc::Setup.start app
     end
 
-    module Options
-      include ::Yarc::Options
-    end
+    # to be used exclusively within the Sinatra app definition
+    # the block is mandatory modifying the Yarc configuration
 
+    def yarc &block
+      yield ::Yarc::Setup.update(self)
+    end
   end
 
-  register Yarc
+  # register Sinatra::Yarc
 
 end

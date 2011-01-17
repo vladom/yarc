@@ -9,7 +9,7 @@ PATH
       erector (>= 0.8.1)
       i18n (>= 0.5.0)
       rack-cache
-      sinatra (~> 1.1.0)
+      sinatra (= 1.1.0)
 
 GEM
   remote: http://rubygems.org/
@@ -87,9 +87,9 @@ GEM
     rspec-expectations (2.4.0)
       diff-lcs (~> 1.1.2)
     rspec-mocks (2.4.0)
-    sinatra (1.1.2)
+    sinatra (1.1.0)
       rack (~> 1.1)
-      tilt (~> 1.2)
+      tilt (~> 1.1)
     stringex (1.1.0)
     tilt (1.2.1)
     uuidtools (2.1.1)
@@ -108,5 +108,5 @@ DEPENDENCIES
   rack-test
   rake
   rspec (>= 2.4.0)
-  sinatra (~> 1.1.0)
+  sinatra (= 1.1.0)
   yarc!

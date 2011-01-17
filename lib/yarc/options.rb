@@ -1,16 +1,21 @@
 module Yarc
-  module Options
-    class Config
-      def path_name route
-        puts 'a toto je zmena ' + route
+  class Options
+
+    attr_reader :routes
+
+    def initialize
+      @routes = {}
+      routes.update :prefix=>'/yarc'
+    end
+
+    module Config
+
+      def prefix path
+        @routes.update { prefix = path }
       end
-    end
 
-    def options &blk
-      yield Config.new
     end
-
-    alias :config :options
 
   end
 end
+

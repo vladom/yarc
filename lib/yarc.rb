@@ -2,9 +2,9 @@ require 'bundler/setup'
 
 Bundler.require
 
-require 'yarc/options'
-require 'yarc/settings'
 require 'yarc/routes'
+require 'yarc/options'
+require 'yarc/setup'
 require 'yarc/sinatra'
 
 module Yarc
