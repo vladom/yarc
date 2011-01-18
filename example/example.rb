@@ -6,24 +6,18 @@ class App < Sinatra::Base
   register Sinatra::Yarc
 
   yarc do |y|
-    y.prefix     = '/yarco'
-    y.public     = '/'
+    y.prefix     = '/fuga'
     y.home       = '/doma'
     y.edit       = '/edito/*'
-    y.json       = '/jsono'
+#   y.public     = '/'
+#   y.json       = '/jsono'
+#   y.templates  = '/tempolates'
   end
 
-  get '/suhaj' do
-    'hej'
+  get '/test' do
+    '<h1>toto je test veru</h1>'
   end
-  get '/vlado' do
-    urls = []
-    p self.class.routes#'GET']
-    #self.class.routes['GET'].each {|r| r[0] = /^\/kopa$/ }
-    settings.routes['GET'].each {|r| urls << r.first }
-    puts settings.routes['GET'].each {|r| urls << r.first }
-    urls.to_s
-  end
+
 end
 
 App.run! :port=>2000
