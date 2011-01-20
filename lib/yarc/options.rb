@@ -1,10 +1,10 @@
 module Yarc
   class Options
-
-    def prefix
-      '/yarc'
+    class << self
+      def prefix
+        '/yarc'
+      end
     end
-
   end
 end
 

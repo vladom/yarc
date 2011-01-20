@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  s.add_dependency 'sinatra', '= 1.1.0'
+  #s.add_dependency 'sinatra', '= 1.1.0'
   s.add_dependency 'rack-cache'
   s.add_dependency 'erector', '>= 0.8.1'
   s.add_dependency 'datamapper', '~> 1.0.2'

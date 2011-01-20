@@ -4,39 +4,53 @@ module Yarc
     class << self
 
       def register app
-        @app            = app
-        @config         = self.new
-        @config.options = Options.new
-        @config.routes  = Routes.new(app, @config.options)
+        @config            = self.new app
+        @config.options    = Options
+        @config.routes     = Routes.new(app, @config.options)
       end
 
       def update &block
         yield @config
-        @config.update_all
       end
 
     end
 
     attr_accessor :options, :routes
+    attr_writer   :datamapper
+    attr_reader   :app
 
-    def initialize
-      @update = { :routes=>{} }
+    def initialize app
+      @app = app
     end
 
-    def update_all
-      routes.update @update[:routes]
+    def prefix opts
+      routes.prefix = opts[:path]
     end
 
-    def prefix=(prefix)
-      @update[:routes].merge! :prefix => prefix
+    def datamapper opts
+      DataMapper::Logger.new(STDOUT,:debug) if app.environment == :development
+      DataMapper.setup *opts[:setup]
+      DataMapper.auto_upgrade! if app.environment == :development
     end
 
-    def home=(path=nil,widget=nil)
-      @update[:routes].merge! :home => { :path=>path, :widget=>widget }
+    def home opts
+      routes.home = opts
     end
 
-    def edit=(path=nil,widget=nil)
-      @update[:routes].merge! :edit => { :path=>path, :widget=>widget }
+    def edit opts
+      routes.edit = opts
+    end
+
+    def json opts
+      routes.json = opts
+    end
+
+    def templates opts
+      routes.templates = opts
+    end
+
+    def warden opts
+      puts opts
     end
 
   end

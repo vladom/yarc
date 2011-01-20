@@ -9,7 +9,6 @@ PATH
       erector (>= 0.8.1)
       i18n (>= 0.5.0)
       rack-cache
-      sinatra (= 1.1.0)
 
 GEM
   remote: http://rubygems.org/
@@ -108,5 +107,5 @@ DEPENDENCIES
   rack-test
   rake
   rspec (>= 2.4.0)
-  sinatra (= 1.1.0)
+  sinatra (~> 1.1.0)
   yarc!

@@ -1,5 +1,3 @@
-require 'sinatra/base'
-
 module Sinatra
   module Yarc
 
@@ -14,7 +12,5 @@ module Sinatra
       ::Yarc::Config.update &block
     end
   end
-
-  # register Sinatra::Yarc
 
 end
