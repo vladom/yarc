@@ -1,6 +1,9 @@
 $LOAD_PATH.unshift File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib'))
+widgets = File.expand_path File.join(File.dirname(__FILE__), '..', 'example', 'widgets.rb')
+
 require 'sinatra/base'
 require 'yarc'
+require widgets
 
 class App < Sinatra::Base
   register Sinatra::Yarc
@@ -12,20 +15,10 @@ class App < Sinatra::Base
     y.warden     :active => false if development?
     y.prefix     :path => '/fuga'
     y.home       :path => '/doma', :widget => Yarc::Widgets::Page::Edit
-    y.edit       :path => '/edito*'
-    y.json       :path => '/jsono*'
-    y.templates  :path => '/tempolates', :widget => Yarc::Widgets::Page::Edit
-  end
-
-
-  get '/test' do
-    '<h1>toto je test veru</h1>'
-  end
-
-  get '/testa' do
-    path = Yarc::Path.first
-    widgets = path.widgets.all if path
-    "<h2 style='color:green'>najdene bolo: #{widgets.first.name}</h2>"
+    y.templates  :widget => Yarc::Widgets::Page::Edit
+    # y.public     :path => '/public*'
+    # y.admin :email => 'vm@gmail.com'
+    # y.user  :email => 'user@gmail.com'
   end
 
   get '/post*' do |splat|

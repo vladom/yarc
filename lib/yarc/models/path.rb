@@ -6,5 +6,6 @@ module Yarc
     property :name, String, :required=>true
 
     has n, :widgets
+    has 1, :page
   end
 end

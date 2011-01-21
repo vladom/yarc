@@ -2,6 +2,7 @@ module Sinatra
   module Yarc
 
     def self.registered(app)
+      # app.use Warden
       ::Yarc::Config.register app
     end
 

@@ -10,7 +10,9 @@ module Yarc
       end
 
       def update &block
+        @config.save_public_route
         yield @config
+        @config.restore_public_route
       end
 
     end
@@ -51,6 +53,19 @@ module Yarc
 
     def warden opts
       puts opts
+    end
+
+    def public opts={}
+      @public_route = opts
+    end
+
+    def restore_public_route
+      app.routes['GET'] << @public['GET']
+      app.routes['HEAD'] << @public['HEAD']
+    end
+
+    def save_public_route
+      ( @public ||={} ).merge! 'GET' => app.routes['GET'].pop, 'HEAD' => app.routes['HEAD'].pop
     end
 
   end
